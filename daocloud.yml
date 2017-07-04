@@ -1,0 +1,29 @@
+version: "3.0"
+stages:
+- 测试阶段
+- 构建阶段
+默认构建任务:
+  label: build
+  stage: 构建阶段
+  job_type: image_build
+  only:
+    branches:
+    - .*
+    tags:
+    - .*
+  build_dir: /
+  cache: true
+  dockerfile_path: /Dockerfile
+默认测试任务:
+  label: test
+  stage: 测试阶段
+  job_type: test
+  only:
+    branches:
+    - .*
+    tags:
+    - .*
+  image: node:6.11.0-wheezy
+  script:
+  - npm install
+  - npm test
