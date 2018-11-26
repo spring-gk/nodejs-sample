@@ -25,8 +25,7 @@ var app = express();
 app.get('/fib', function (req, res) {
   var n = Number(req.query.n);
   try {
-    var t = String(fibonacci(n));
-    res.send("111111111111");
+    res.send(String(fibonacci(n)));
   } catch (e) {
     res
       .status(500)
